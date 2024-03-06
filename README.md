@@ -61,7 +61,7 @@
 
 ## 结果展示
 
-![Alt text](image.png)
+![Alt text](example_image/1709712838229.png)
 
 ## 模型部署环境
 
