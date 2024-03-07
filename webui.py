@@ -27,7 +27,7 @@ def image_search(image):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("--host", default="192.168.10.60", help="本机IP地址") # 192.168.10.60
+    parser.add_argument("--host", default="192.168.10.60", help="数据库IP地址") # 192.168.10.60
     parser.add_argument("--server_port", default=9090, help="port端口号")
     parser.add_argument("--database_name", default="image_vector_db_windows", help="milvus数据库名称")
     parser.add_argument("--collection_name", default="antique_vector_windows", help="milvus集合名称")

@@ -4,7 +4,7 @@ from pymilvus import CollectionSchema, FieldSchema, DataType
 from pymilvus import Collection, utility
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--host", default="192.168.10.60", help="本机IP地址")
+parser.add_argument("--host", default="192.168.10.60", help="数据库IP地址")
 parser.add_argument("--database_name", default="image_vector_db_windows", help="milvus数据库名称")
 parser.add_argument("--collection_name", default="antique_vector_windows", help="milvus集合名称")
 parser.add_argument("--index_name", default="embeding", help="milvus集合名称")
@@ -20,7 +20,6 @@ conn = connections.connect(host=args.host, port=19530)
 database = db.create_database(args.database_name)
 # 使用数据库
 db.using_database(args.database_name)
-print(db.list_database())
 
 m_id = FieldSchema(name="m_id", dtype=DataType.INT64, is_primary=True,)
 embeding = FieldSchema(name="embeding", dtype=DataType.FLOAT_VECTOR, dim=args.embeding_dim,)
@@ -44,3 +43,4 @@ index_params = {
 collection.create_index(field_name=args.index_name,index_params=index_params)
 
 utility.index_building_progress(args.collection_name)
+print("创建完毕")
