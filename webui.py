@@ -41,8 +41,6 @@ if __name__ == "__main__":
 
     net_helper = NetHelper()
 
-    num_rows, num_cols = calculate_rows_and_cols(args.limit)
-
     app = gr.Interface(
         fn=image_search,
         inputs=gr.inputs.Image(type="pil", source='upload'),
