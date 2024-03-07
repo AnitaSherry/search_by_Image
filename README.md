@@ -64,6 +64,7 @@
 ![Alt text](example_image/1709712838229.png)
 
 ## 模型部署环境
+
 ```
 pip install docker==6.1.3
 pip install docker-compose==1.29.2
@@ -80,7 +81,9 @@ wget https://github.com/milvus-io/milvus/releases/download/v2.2.13/milvus-standa
 sudo docker-compose up -d
 sudo docker-compose ps
 ```
+
 通过命令查看显示信息如下
+
 ```
       Name                     Command                  State                            Ports
 --------------------------------------------------------------------------------------------------------------------
@@ -88,46 +91,62 @@ milvus-etcd         etcd -advertise-client-url ...   Up (healthy)   2379/tcp, 23
 milvus-minio        /usr/bin/docker-entrypoint ...   Up (healthy)   0.0.0.0:9000->9000/tcp, 0.0.0.0:9001->9001/tcp
 milvus-standalone   /tini -- milvus run standalone   Up (healthy)   0.0.0.0:19530->19530/tcp, 0.0.0.0:9091->9091/tcp
 ```
+
 验证连接
+
 ```
 docker port milvus-standalone 19530/tcp
 ```
+
 停止Milvus
+
 ```
 sudo docker-compose down
 ```
+
 停止后删除数据
+
 ```
 sudo rm -rf  volumes
 ```
+
 ### docker安装
+
 ```
 sudo yum install docker
 sudo systemctl start docker
 sudo systemctl enable docker
 sudo docker --version
 ```
+
 输出示例
 ```
 Docker version 18.09.0, build 172f8da
 ```
 ### docker-compose安装
+
 ```
 curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 docker-compose -v
 ```
+
 输出示例
+
 ```
 docker-compose version 1.29.2, build unknown
 ```
 
 ### Milvus可视化工具Attu
+
 ```
 docker run -p 8000:3000  -e MILVUS_URL={your machine IP}:19530 zilliz/attu:v2.2.6
 ```
+
 启动docker后，在浏览器中访问“http://{your machine IP}:8000”，点击“Connect”进入Attu服务
+
 ## Data数据示例
+
 ```
 链接：https://pan.baidu.com/s/1eEDYq0oCBxmVRrIhophgCQ?pwd=c50e 
 提取码：c50e
