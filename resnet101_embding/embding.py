@@ -64,14 +64,14 @@ def read_image(img_path):
         transforms.ToTensor(), normalize
     ])
     img = transform(img)
-    return torch.unsqueeze(img, 0)
+    return torch.unsqueeze(img, 0).cuda()
 
 def resnet_embeding(ImageFile):
     input_img = read_image(ImageFile)
     return model(input_img)
 
 src_params = torch.load(ModelFile)
-model = resnest101()
+model = resnest101().cuda()
 load_pretrained(model, src_params)
 
 
