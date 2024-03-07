@@ -41,7 +41,7 @@ if __name__ == '__main__':
     parser.add_argument("--database_name", default="image_vector_db_windows", help="milvus数据库名称")
     parser.add_argument("--collection_name", default="antique_vector_windows", help="milvus集合名称")
     parser.add_argument("--metric_type", choices=["L2","IP","JACCARD"],default="L2", help="度量类型")
-    parser.add_argument("--data", default="data", help="milvus集合名称")
+    parser.add_argument("--data", default="data", help="图片存储地址")
 
     args = parser.parse_args()
 
