@@ -144,10 +144,15 @@ docker run -p 8000:3000  -e MILVUS_URL=0.0.0.0:19530 zilliz/attu:dev
 ```
 https://github.com/zilliztech/attu/issues/415
 dev版本可以支持arrch昇腾服务器，本人和Attu官方人员沟通后得到版本，x86系统可以使用v2.3.8版本
+
 #### 进入网页端
+
 启动docker后，在浏览器中访问“http://{your machine IP}:8000”，点击“Connect”进入Attu服务
+
 Milvus Address 填写{your machine IP}:19530
+
 Milvus Database (optional) 如果创建过数据库直接填写数据库名称，如果没有填写default，创建一个名为default的数据库
+
 Milvus Username (optional) 和 Milvus Password (optional) 无需填写，因为默认是关闭鉴权的
 
 ## Data数据示例
@@ -159,3 +164,6 @@ Milvus Username (optional) 和 Milvus Password (optional) 无需填写，因为�
 
 ## 鼓励支持
  点个赞再走呗！比心💞️
+
+## 点赞历史
+<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="https://star-history.com/embed?secret=Z2l0aHViX3BhdF8xMUFYRFVUTlkwa3pBcjJYYmN6cTZqX1lCSE0xc2dMOEFvR29WYnpiZUdTTDdXcUlQZXFJZ3ltNTBleEM1U25vZVVGSFVYMlRVNEI0M2lsT3Qy#AnitaSherry/search_by_Image&Date" frameBorder="0"></iframe>
