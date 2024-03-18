@@ -165,5 +165,5 @@ Milvus Username (optional) 和 Milvus Password (optional) 无需填写，因为�
 ## 鼓励支持
  点个赞再走呗！比心💞️
 
-## 点赞历史
-<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="https://star-history.com/embed?secret=Z2l0aHViX3BhdF8xMUFYRFVUTlkwa3pBcjJYYmN6cTZqX1lCSE0xc2dMOEFvR29WYnpiZUdTTDdXcUlQZXFJZ3ltNTBleEM1U25vZVVGSFVYMlRVNEI0M2lsT3Qy#AnitaSherry/search_by_Image&Date" frameBorder="0"></iframe>
+## Star History
+[![Star History Chart](https://api.star-history.com/svg?repos=AnitaSherry/search_by_Image&type=Date)](https://star-history.com/#AnitaSherry/search_by_Image&Date)
