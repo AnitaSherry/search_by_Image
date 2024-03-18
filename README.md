@@ -140,10 +140,15 @@ docker-compose version 1.29.2, build unknown
 ### Milvus可视化工具Attu
 
 ```
-docker run -p 8000:3000  -e MILVUS_URL={your machine IP}:19530 zilliz/attu:v2.2.6
+docker run -p 8000:3000  -e MILVUS_URL=0.0.0.0:19530 zilliz/attu:dev
 ```
-
+https://github.com/zilliztech/attu/issues/415
+dev版本可以支持arrch昇腾服务器，本人和Attu官方人员沟通后得到版本，x86系统可以使用v2.3.8版本
+#### 进入网页端
 启动docker后，在浏览器中访问“http://{your machine IP}:8000”，点击“Connect”进入Attu服务
+Milvus Address 填写{your machine IP}:19530
+Milvus Database (optional) 如果创建过数据库直接填写数据库名称，如果没有填写default，创建一个名为default的数据库
+Milvus Username (optional) 和 Milvus Password (optional) 无需填写，因为默认是关闭鉴权的
 
 ## Data数据示例
 
