@@ -21,11 +21,29 @@
 - **模型描述：** 该模型基于 ResNeSt101 架构，经过大规模数据集的预训练和精调，具有较强的图像识别能力。它能够识别通用领域中的各种物体、场景和图案
 
 ## 代码使用流程
+```
+# 拉取仓库
+$ git clone https://github.com/AnitaSherry/search_by_Image.git
+
+# 进入目录
+$ cd search_by_Image
+```
+### 模型部署环境
+
+```
+pip install modelscope
+pip install modelscope[cv] -f https://modelscope.oss-cn-beijing.aliyuncs.com/releases/repo.html
+pip install docker==6.1.3
+pip install docker-compose==1.29.2
+pip install gradio==3.50.2
+pip install pymilvus==2.3.6
+```
+其他的缺什么装什么,我的环境装包太多不便分享，每个人都有适合自己的包
 
 1. **下载模型：** 
 
    ```
-   python model_structure/modescope_init.py
+   python model/modescope_model_init.py
    ```
 
    记录好模型下载后的路径，一般情况下模型路径为：
@@ -63,15 +81,6 @@
 
 ![Alt text](example_image/1709712838229.png)
 
-## 模型部署环境
-
-```
-pip install docker==6.1.3
-pip install docker-compose==1.29.2
-pip install gradio==3.50.2
-pip install pymilvus==2.3.6
-```
-其他的缺什么装什么
 ## Milvus部署及使用
 
 ```
