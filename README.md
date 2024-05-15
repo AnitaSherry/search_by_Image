@@ -52,6 +52,7 @@ pip install pymilvus==2.3.6
    Linux_ModelFile="/root/.cache/modelscope/hub/damo/cv_resnest101_general_recognition/pytorch_model.pt"
    Windows_ModelFile='C:\\Users\\Administrator\\.cache\\modelscope\\hub\\damo\\cv_resnest101_general_recognition\\pytorch_model.pt'
    ```
+   将得到的路径记录下来，替换./resnet101_embding/embding.py代码中第13行的路径
 
 2. **建立向量库：** 
 
