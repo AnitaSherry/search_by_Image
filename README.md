@@ -70,7 +70,7 @@ pip install pymilvus==2.3.6
 
    data目录中直接存放图片
 
-4. **搜索功能使用：** 
+4. **前端搜索功能使用演示：** 
 
    ```
    python webui.py --host 192.168.10.60 --server_port 9090 --limit 4
@@ -80,7 +80,7 @@ pip install pymilvus==2.3.6
    运行后访问 http://192.168.10.60:9090/ 即可使用
    ![alt text](example_image/image_url.png)
 ## 结果展示
-
+   展示的时候如果你觉得速度慢，那是因为网速限制了图片从服务器传输到前端
 ![alt text](example_image/image_gradio.png)
 
 ## Milvus部署及使用
