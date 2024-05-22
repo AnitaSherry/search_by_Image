@@ -65,7 +65,7 @@ pip install pymilvus==2.3.6
 3. **图像转向量：** 
 
    ```
-   pyhon Image_vectorization.py  --host 192.168.10.60  --data data
+   python Image_vectorization.py  --host 192.168.10.60  --data data
    ```
 
    data目录中直接存放图片
@@ -77,10 +77,11 @@ pip install pymilvus==2.3.6
    ```
 
    limit限制搜索图片数量
-
+   运行后访问 http://192.168.10.60:9090/ 即可使用
+   ![alt text](example_image/image_url.png)
 ## 结果展示
 
-![Alt text](example_image/1709712838229.png)
+![alt text](example_image/image_gradio.png)
 
 ## Milvus部署及使用
 

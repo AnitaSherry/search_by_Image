@@ -17,7 +17,7 @@ def image_search(image):
     # print("restnet101编码时间：", time.time()-start_time, "秒")
     imput_embeding = imput_embeding[0].detach().cpu().numpy()
     # start_time = time.time()
-    results = antique_image.search_data(imput_embeding,args.limit)
+    results = antique_image.search_data(imput_embeding,int(args.limit))
     # print("milvus向量库搜索时间：", time.time()-start_time, "秒")
     pil_images = [Image.open(result['path']) for result in results]
     # print("查询结果数量：",len(pil_images))
@@ -51,4 +51,4 @@ if __name__ == "__main__":
     )
 
     ip_addr = net_helper.get_host_ip()
-    app.queue(concurrency_count=8).launch(show_api=False, share=True, server_name=ip_addr, server_port=args.server_port)
+    app.queue(concurrency_count=8).launch(show_api=False, share=True, server_name=ip_addr, server_port=int(args.server_port))
