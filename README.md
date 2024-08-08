@@ -29,16 +29,22 @@ $ git clone https://github.com/AnitaSherry/search_by_Image.git
 $ cd search_by_Image
 ```
 ### 模型部署环境
-
+下载anaconda3并安装
+添加镜像源
 ```
-pip install modelscope
-pip install modelscope[cv] -f https://modelscope.oss-cn-beijing.aliyuncs.com/releases/repo.html
-pip install docker==6.1.3
-pip install docker-compose==1.29.2
-pip install gradio==3.50.2
-pip install pymilvus==2.3.6
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge
 ```
-其他的缺什么装什么,我的环境装包太多不便分享，每个人都有适合自己的包
+重新登陆一下服务器，初始化conda，并创建环境
+```
+conda init
+conda create -n sakura python=3.10
+```
+安装环境所需包（NVIDIA显卡驱动[安装参考](https://blog.csdn.net/weixin_46398647/article/details/137666448?spm=1001.2014.3001.5502)）
+```
+pip install -r requirements.txt
+```
 
 1. **下载模型：** 
 
@@ -52,33 +58,24 @@ pip install pymilvus==2.3.6
    Linux_ModelFile="/root/.cache/modelscope/hub/damo/cv_resnest101_general_recognition/pytorch_model.pt"
    Windows_ModelFile='C:\\Users\\Administrator\\.cache\\modelscope\\hub\\damo\\cv_resnest101_general_recognition\\pytorch_model.pt'
    ```
-   将得到的路径记录下来，替换./resnet101_embding/embding.py代码中第13行的路径
+   将得到的路径记录下来，替换config.py代码中EMB的路径
 
-2. **建立向量库：** 
-
-   ```
-   python milvus_manage/mlivus_create.py --host 192.168.10.60 
-   ```
-
-   host 为 milvus 数据库所在服务器地址
-
-3. **图像转向量：** 
+2. **图像转向量并存入向量库：** 
 
    ```
-   python Image_vectorization.py  --host 192.168.10.60  --data data
+   python Image_vectorization.py --data data
    ```
 
    data目录中直接存放图片
 
-4. **前端搜索功能使用演示：** 
+3. **前端搜索功能使用演示：** 
 
    ```
-   python webui.py --host 192.168.10.60 --server_port 9090 --limit 4
+   python webui.py --server_port 9090
    ```
 
-   limit限制搜索图片数量
-   运行后访问 http://192.168.10.60:9090/ 即可使用
-   ![alt text](example_image/image_url.png)
+   运行后访问 Running on local URL:  http://127.0.0.1:9090 即可使用
+
 ## 结果展示
    展示的时候如果你觉得速度慢，那是因为网速限制了图片从服务器传输到前端
 ![alt text](example_image/image_gradio.png)
@@ -88,7 +85,7 @@ pip install pymilvus==2.3.6
 ```
 mkdir Milvus
 cd Milvus
-wget https://github.com/milvus-io/milvus/releases/download/v2.2.13/milvus-standalone-docker-compose.yml -O docker-compose.yml
+wget https://github.com/milvus-io/milvus/releases/download/v2.4.1/milvus-standalone-docker-compose.yml -O docker-compose.yml
 sudo docker-compose up -d
 sudo docker-compose ps
 ```
