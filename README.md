@@ -4,7 +4,7 @@
 • 🤖 <a href="https://modelscope.cn/models/iic/cv_resnest101_general_recognition/summary" target="_blank">ModelScope</a> • 📃 <a href="https://milvus.io/" target="_blank">Milvus</a>  
 </p>
 
-[alt text](example_image/森林.jpg)
+![alt text](example_image/森林.jpg)
 
 ## 更新
 ### 2024/8/8
