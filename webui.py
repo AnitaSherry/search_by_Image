@@ -1,6 +1,5 @@
 import gradio as gr
 import argparse
-from net_helper import NetHelper
 from PIL import Image
 from resnet101_embding.embding import resnet_embeding
 from milvus_manage.milvus_operator import MilvusOperator
