@@ -4,6 +4,20 @@
 • 🤖 <a href="https://modelscope.cn/models/iic/cv_resnest101_general_recognition/summary" target="_blank">ModelScope</a> • 📃 <a href="https://milvus.io/" target="_blank">Milvus</a>  
 </p>
 
+## 更新
+### 2024/8/8
+- 添加选择数据库集合选项
+- 添加可选择返回图片数量
+- 添加可选择L2相似度阈值
+- 添加config文件一键配置各个参数信息
+- 添加requirements.txt文件一键配置环境
+- 添加结果top文本描述信息
+### 即将更新
+- 先抠图再识别
+- 集合分区
+- 自动上传图片
+- 一键删除图片库按钮
+
 ## 介绍
 
 本文档旨在介绍如何使用 ModelScope 中的通用领域模型（iic/cv_resnest101_general_recognition）以及搭配 Milvus 向量数据库实现以图搜图的功能。这项技术能够有效地从大量图片中迅速识别出与目标图片相似的图片，为图像检索任务提供了一种高效的解决方案
