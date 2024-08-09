@@ -44,7 +44,7 @@
 
 - **模型名称：** cv_vitb16_segmentation_shop-seg
 - **模型类型：** 视觉分割
-- **模型描述：** 模型结构为Denseclip结构，视觉encoder采用vit-base-patch16结构，经过40w商品显著性分割数据的预训练和精调，具有较强的图像分割能力。它能够识别商品场景，对通用场景效果较差
+- **模型描述：** 模型结构为Denseclip结构，视觉encoder采用vit-base-patch16结构，经过40w商品显著性分割数据的预训练和精调，具有较强的图像分割能力。它能够识别商品场景，对通用场景效果较差，特殊领域物品建议不要使用
 
 ## 代码使用流程
 ```
@@ -110,10 +110,12 @@ pip install -r requirements.txt
 
 ## 结果展示
    展示的时候如果你觉得速度慢，那是因为网速限制了图片从服务器传输到前端
-   添加后相似度值会非常大，很难搜索到相似图片，这很正常
+
+   --use_seg 添加后相似度值会非常大，很难搜索到相似图片，这很正常
+
 ![alt text](example_image/image_gradio.png)
 
-图像处理流程
+图像分割处理流程
 
 ![alt text](example_image/异形灯具_拼接展示.jpg)
 
