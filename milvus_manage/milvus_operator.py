@@ -27,6 +27,10 @@ class MilvusOperator:
                 schema.verify()
 
                 index_params = self.client.prepare_index_params()
+                if len(data)>nlist*10:
+                    if len(data)>65536*10:
+                        nlist = 65536
+                    nlist = len(data)/10
                 index_params.add_index(field_name="embedding",
                                     index_type=index_type,
                                     metric_type=metric_type,

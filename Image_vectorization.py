@@ -79,7 +79,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--data", default="data", help="图片存储地址")
-    parser.add_argument("--use_seg", default=False, help="是否使用图像分割")
+    parser.add_argument("--use_seg", action="store_true", help="是否使用图像分割")
     args = parser.parse_args()
 
     batch_import(args.data)

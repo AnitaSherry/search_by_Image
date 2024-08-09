@@ -44,7 +44,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
     parser.add_argument("--server_port", default=9090, help="port端口号")
-    parser.add_argument("--use_seg", default=False, help="是否使用图像分割")
+    parser.add_argument("--use_seg", action="store_true", help="是否使用图像分割")
     args = parser.parse_args()
 
     if args.use_seg:
