@@ -7,6 +7,9 @@
 ![alt text](example_image/森林.jpg)
 
 ## 更新
+### 2024/8/9
+- 先抠图再识别
+
 ### 2024/8/8
 - 添加选择数据库集合选项
 - 添加可选择返回图片数量
@@ -14,15 +17,16 @@
 - 添加config文件一键配置各个参数信息
 - 添加requirements.txt文件一键配置环境
 - 添加结果top文本描述信息
+- 一键删除图片库
+
 ### 即将更新
-- 先抠图再识别
 - 集合分区
-- 自动上传图片
-- 一键删除图片库按钮
+- 自动上传data目录中新添加的图片
+
 
 ## 介绍
 
-本文档旨在介绍如何使用 ModelScope 中的通用领域模型（iic/cv_resnest101_general_recognition）以及搭配 Milvus 向量数据库实现以图搜图的功能。这项技术能够有效地从大量图片中迅速识别出与目标图片相似的图片，为图像检索任务提供了一种高效的解决方案
+本文档旨在介绍如何使用 ModelScope 中的通用领域模型（cv_resnest101_general_recognition）与商品显著性图像分割-电商领域模型（cv_vitb16_segmentation_shop-seg）以及搭配 Milvus 向量数据库实现以图搜图的功能。这项技术能够有效地从大量图片中迅速识别出与目标图片相似的图片，为图像检索任务提供了一种高效的解决方案
 
 ### Milvus
 
@@ -32,9 +36,15 @@
 
 ### cv_resnest101_general_recognition
 
-- **模型名称：** iic/cv_resnest101_general_recognition
+- **模型名称：** cv_resnest101_general_recognition
 - **模型类型：** 视觉分类
 - **模型描述：** 该模型基于 ResNeSt101 架构，经过大规模数据集的预训练和精调，具有较强的图像识别能力。它能够识别通用领域中的各种物体、场景和图案
+
+### cv_vitb16_segmentation_shop-seg
+
+- **模型名称：** cv_vitb16_segmentation_shop-seg
+- **模型类型：** 视觉分割
+- **模型描述：** 模型结构为Denseclip结构，视觉encoder采用vit-base-patch16结构，经过40w商品显著性分割数据的预训练和精调，具有较强的图像分割能力。它能够识别商品场景，对通用场景效果较差
 
 ## 代码使用流程
 ```
@@ -61,7 +71,7 @@ conda create -n sakura python=3.10
 ```
 pip install -r requirements.txt
 ```
-
+其中mmcv包在[这里](https://download.openmmlab.com/mmcv/dist/cu121/torch2.3.0/index.html)下载
 1. **下载模型：** 
 
    ```
@@ -81,20 +91,39 @@ pip install -r requirements.txt
    ```
    python Image_vectorization.py --data data
    ```
+   如果使用图像分割，添加：--use_seg
 
-   data目录中直接存放图片
+   data目录中直接存放图片（data目录中可全部都是图片或分为几个子文件夹中存放图片，子文件夹即为milvus数据库中的集合）
+
+   **注**：如果要删除这个向量数据库执行
+   ```
+   python milvus_manage/milvus_reduction.py
+   ```
 
 3. **前端搜索功能使用演示：** 
 
    ```
    python webui.py --server_port 9090
    ```
-
+   如果使用图像分割，添加：--use_seg
    运行后访问 Running on local URL:  http://127.0.0.1:9090 即可使用
 
 ## 结果展示
    展示的时候如果你觉得速度慢，那是因为网速限制了图片从服务器传输到前端
+   添加后相似度值会非常大，很难搜索到相似图片，这很正常
 ![alt text](example_image/image_gradio.png)
+
+图像处理流程
+
+![alt text](example_image/异形灯具_拼接展示.jpg)
+
+<center>
+最终用于进行相似度比对的图像
+</center>
+
+<center>
+    <img src="example_image/异形灯具_灰色背景升级.jpg" alt="alt text" />
+</center>
 
 ## Milvus部署及使用
 

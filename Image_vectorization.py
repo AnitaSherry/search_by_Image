@@ -1,7 +1,8 @@
 import os
 import argparse
 from PIL import Image, ImageSequence
-from resnet101_embding.embding import resnet_embeding
+from model.embding_model.embding import resnet_embeding
+from model.segmentation_model.segmentation import seg
 from milvus_manage.milvus_operator import MilvusOperator
 import json
 from config import *
@@ -31,7 +32,8 @@ def update_image_vector(new_collection_name, data_path, operator: MilvusOperator
             file_list.append((full_path, file))
 
     for full_path, file in tqdm(file_list, desc=new_collection_name):
-
+        if args.use_seg:
+            full_path = seg(full_path)
         embeding = resnet_embeding(full_path)
 
         image_data.append({"file_name": file,"path":full_path, "embedding": embeding[0].detach().cpu().numpy().tolist()})
@@ -77,6 +79,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--data", default="data", help="图片存储地址")
+    parser.add_argument("--use_seg", default=False, help="是否使用图像分割")
     args = parser.parse_args()
 
     batch_import(args.data)

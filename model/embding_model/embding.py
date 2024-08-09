@@ -3,7 +3,7 @@ import torchvision
 import sys
 sys.path.append('/home/search_by_Image/')
 import os.path as osp
-from resnet101_embding import resnet
+from model.embding_model import resnet
 from typing import Any, Dict
 import os
 import cv2
@@ -80,10 +80,10 @@ def resnet_embeding(ImageFile):
     input_img = read_image(ImageFile)
     return model(input_img)
 
+
 src_params = torch.load(ModelFile)
 model = resnest101().to(device)
 load_pretrained(model, src_params)
-
 
 
 if __name__ == '__main__':
@@ -93,15 +93,4 @@ if __name__ == '__main__':
     
     print(outputs)
     print(outputs.shape) # [1, 2048]
-    outputs = outputs[0].cpu().tolist()
-    print(len(outputs))
-    print("开始导入")
-    from milvus_manage.milvus_operator import MilvusOperator
-    upload_image = MilvusOperator()
-    from pymilvus import MilvusClient
-    from ip_socket import host
-    database_name = "image_vector_db"
-    client = MilvusClient(uri="http://"+host+":19530",db_name=database_name)
-    data = [{'id':1,'file_name': '41.jpg', 'path': 'data/圆形/41.jpg', 'embedding': outputs}]
-    upload_image.insert_data(collection_name="yuan_xing",data=data)
-    # client.insert(collection_name="yuan_xing",data=data)
+ 

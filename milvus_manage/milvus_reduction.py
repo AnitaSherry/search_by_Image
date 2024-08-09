@@ -25,5 +25,5 @@ else:
 
 all_databases = db.list_database()
 print("现有数据库:",all_databases)
-collections = client.list_collections()
-print("现有集合:", collections)
+# collections = client.list_collections()
+# print("现有集合:", collections)

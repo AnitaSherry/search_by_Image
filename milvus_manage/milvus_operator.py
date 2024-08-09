@@ -55,7 +55,8 @@ class MilvusOperator:
         for i in search_res[0]:
             if i['distance'] < topk:
                 docs.append(i)
-        return docs
+        return search_res[0]
+        # return docs
 
     def drop_database(self,database_name):
         connections.connect(host=host, port=19530)
