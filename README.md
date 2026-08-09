@@ -1,3 +1,5 @@
+
+
 # 以图搜图
 
 <p align="center">
@@ -66,6 +68,7 @@ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/
 ```
 conda init
 conda create -n sakura python=3.10
+conda activate sakura
 ```
 安装环境所需包（NVIDIA显卡驱动[安装参考](https://blog.csdn.net/weixin_46398647/article/details/137666448?spm=1001.2014.3001.5502)）
 ```
